@@ -7,8 +7,8 @@ internal: eth0 port = <SOCKS_PORT>
 # 配置danted服务器所在的网络接口
 external: eth0
 
-# 配置认证方式为用户名和密码，但是不需要进行认证
-socksmethod: username none
+# 配置认证方式为用户名和密码
+socksmethod: username password
 
 # 配置客户端连接使用SOCKS v5协议进行加密
 clientmethod: none
@@ -16,6 +16,11 @@ clientmethod: none
 # 配置danted服务器进程的用户
 user.privileged: root
 user.unprivileged: nobody
+
+# 定义可以通过代理服务器的用户
+user.<SOCKS_USER>: password "<SOCKS_PASS>" # 允许 user1 用户使用 password1 访问
+# user.user2: password "password2" # 允许 user2 用户使用 password2 访问
+
 
 # 定义可以通过代理服务器的用户
 client pass {
@@ -36,8 +41,9 @@ socks pass {
   protocol: tcp udp
 }
 
-# socks block {
-#   from: 0.0.0.0/0 to: 0.0.0.0/0
-#   log: error
-#   clientmethod: none
-# }
+# 定义拒绝访问代理服务器的用户
+socks block {
+  from: 0.0.0.0/0 to: 0.0.0.0/0
+  log: error
+  clientmethod: none
+}
