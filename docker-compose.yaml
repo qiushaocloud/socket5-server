@@ -1,0 +1,12 @@
+version: "3"
+services:
+  qiushaocloud-socket5-server:
+    image: qiushaocloud/socket5-server
+    container_name: qiushaocloud-socket5-server
+    hostname: qiushaocloud-socket5-server
+    ports:
+      - "$SOCKS_PORT:$SOCKS_PORT"
+    environment:
+      - SOCKS_USER=$SOCKS_USER
+      - SOCKS_PASS=$SOCKS_PASS
+      - SOCKS_PORT=$SOCKS_PORT
