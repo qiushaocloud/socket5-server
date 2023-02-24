@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:latest
 
 # 安装所需的软件包
 RUN apt-get update && apt-get install -y dante-server
