@@ -5,10 +5,9 @@ ENV SOCKS_USER ""
 ENV SOCKS_PASS ""
 ENV SOCKS_PORT 1080
 
-RUN apt update && apt install -y vim net-tools iputils-ping psmisc
-
 # 安装所需的软件包
 RUN apt-get update && apt-get install -y dante-server
+# RUN apt update && apt install -y vim net-tools iputils-ping psmisc
 
 RUN mv /etc/danted.conf /etc/danted.conf.defaultbak
 
