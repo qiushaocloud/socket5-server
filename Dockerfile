@@ -11,5 +11,5 @@ ENV SOCKS_PORT 1080
 # 复制danted.conf文件
 COPY danted.conf /etc/danted.conf
 
-# 启动Dante Server
-CMD ["sockd", "-f", "/etc/danted.conf"]
+# 运行Dante Server
+CMD ["danted", "-D"]
