@@ -8,7 +8,7 @@ internal: eth0 port = <SOCKS_PORT>
 external: eth0
 
 # 配置认证方式为用户名和密码，但是不需要进行认证
-method: username none
+socksmethod: username none
 
 # 配置客户端连接使用SOCKS v5协议进行加密
 clientmethod: none
@@ -24,7 +24,7 @@ client pass {
 }
 
 # 定义允许通过代理服务器的协议和端口
-pass {C
+pass {
   from: 0.0.0.0/0 to: 0.0.0.0/0
   protocol: tcp udp
 }
