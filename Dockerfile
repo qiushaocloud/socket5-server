@@ -1,5 +1,7 @@
 FROM ubuntu:latest
 
+RUN apt update && apt install -y vim net-tools iputils-ping
+
 # 安装所需的软件包
 RUN apt-get update && apt-get install -y dante-server
 
