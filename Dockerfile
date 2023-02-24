@@ -1,15 +1,15 @@
-FROM ubuntu:16.04
+FROM ubuntu:latest
 
-ENV SOCKS_USER= \
-    SOCKS_PASS= \
-    SOCKS_PORT=1080
+# 安装所需的软件包
+RUN apt-get update && apt-get install -y dante-server
 
-RUN apt-get update && \
-    apt-get install -y dante-server && \
-    rm -rf /var/lib/apt/lists/*
+# 设置环境变量
+ENV SOCKS_USER ""
+ENV SOCKS_PASS ""
+ENV SOCKS_PORT 1080
 
-COPY sockd.conf /etc/
+# 复制danted.conf文件
+COPY danted.conf /etc/danted.conf
 
-EXPOSE 1080
-
-CMD ["sh", "-c", "echo $SOCKS_USER:$SOCKS_PASS | chpasswd && usermod -s /bin/false sockd && sockd -N 1 -f /etc/sockd.conf -D"]
+# 启动Dante Server
+CMD ["sockd", "-f", "/etc/danted.conf"]
