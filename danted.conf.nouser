@@ -2,7 +2,7 @@
 logoutput: /var/log/danted.log
 
 # 配置代理服务器绑定的接口和端口
-internal: eth0 port = 1080
+internal: eth0 port = <SOCKS_PORT>
 
 # 配置danted服务器所在的网络接口
 external: eth0
@@ -11,10 +11,10 @@ external: eth0
 method: username none
 
 # 配置客户端连接使用SOCKS v5协议进行加密
-clientmethod: socks_v5
+clientmethod: none
 
 # 配置danted服务器进程的用户
-user.privileged: nobody
+user.privileged: root
 user.unprivileged: nobody
 
 # 定义可以通过代理服务器的用户
@@ -24,7 +24,7 @@ client pass {
 }
 
 # 定义允许通过代理服务器的协议和端口
-pass {
+pass {C
   from: 0.0.0.0/0 to: 0.0.0.0/0
   protocol: tcp udp
 }
@@ -36,9 +36,8 @@ socks pass {
   protocol: tcp udp
 }
 
-# 定义SOCKS协议连接错误的日志输出级别
-socks {
-  from: 0.0.0.0/0 to: 0.0.0.0/0
-  log: error
-  clientmethod: none
-}
+# socks block {
+#   from: 0.0.0.0/0 to: 0.0.0.0/0
+#   log: error
+#   clientmethod: none
+# }
