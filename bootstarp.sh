@@ -1,3 +1,7 @@
+#!/bin/bash
+
+echo "start server"
+
 if [ ! -f "/etc/danted.conf" ];then
     echo "file /etc/danted.conf is not exist"
     if [ "$SOCKS_USER" ] && [ "$SOCKS_PASS" ]; then
@@ -32,3 +36,8 @@ echo 'finsh danted'
 
 echo 'cat /var/log/danted.log'
 cat /var/log/danted.log
+
+while true; do
+  echo "check ...."
+  sleep 300
+done
