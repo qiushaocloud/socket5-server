@@ -40,6 +40,12 @@ cat /var/log/danted.log
 echo 'netstat -ano'
 netstat -ano
 
+
+if [ -f "/root/extra.sh" ];then
+    echo 'exit /root/extra.sh file'
+    bash /root/extra.sh
+fi
+
 while true; do
   echo "check ...."
   sleep 300

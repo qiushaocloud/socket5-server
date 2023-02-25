@@ -17,4 +17,6 @@ COPY bootstarp.sh /root/bootstarp.sh
 
 RUN chmod 777 /root/bootstarp.sh
 
+WORKDIR /root
+
 CMD /root/bootstarp.sh
