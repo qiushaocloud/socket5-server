@@ -19,7 +19,7 @@ if [ "$SOCKS_USER" ] && [ "$SOCKS_PASS" ]; then
         echo "User $SOCKS_USER does not exist"
         groupadd $SOCKS_USER
         useradd -g $SOCKS_USER -s /bin/false -m $SOCKS_USER
-        echo "$username:$password" | chpasswd
+        echo "$SOCKS_USER:$SOCKS_PASS" | chpasswd
     fi
 fi
 
