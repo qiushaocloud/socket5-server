@@ -37,6 +37,9 @@ echo 'finsh danted'
 echo 'cat /var/log/danted.log'
 cat /var/log/danted.log
 
+echo 'netstat -ano'
+netstat -ano
+
 while true; do
   echo "check ...."
   sleep 300

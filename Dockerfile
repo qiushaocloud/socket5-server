@@ -6,6 +6,7 @@ ENV SOCKS_PASS ""
 ENV SOCKS_PORT 1080
 
 RUN apt-get update && apt-get install -y dante-server
+RUN apt install -y net-tools
 # RUN apt update && apt install -y vim net-tools iputils-ping psmisc
 
 RUN mv /etc/danted.conf /etc/danted.conf.defaultbak
