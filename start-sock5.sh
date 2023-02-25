@@ -9,6 +9,9 @@ if [ ! -f "/etc/danted.conf" ];then
     fi
 
     sed -i "s/<SOCKS_PORT>/$SOCKS_PORT/g" /etc/danted.conf
+
+    echo "cat /etc/danted.conf"
+    cat /etc/danted.conf
 fi
 
 
@@ -21,8 +24,11 @@ if [ "$SOCKS_USER" ] && [ "$SOCKS_PASS" ]; then
         useradd -g $SOCKS_USER -s /bin/false -m $SOCKS_USER
         echo "$SOCKS_USER:$SOCKS_PASS" | chpasswd
     fi
-
-    chown -R $SOCKS_USER:$SOCKS_USER /etc/danted.conf
 fi
 
+echo 'start danted'
 danted -f /etc/danted.conf -D
+echo 'finsh danted'
+
+echo 'cat /var/log/danted.log'
+cat /var/log/danted.log
