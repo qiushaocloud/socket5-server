@@ -21,12 +21,14 @@ user.unprivileged: <SOCKS_USER>
 client pass {
   from: 0.0.0.0/0 to: 0.0.0.0/0
   log: connect disconnect error
+  socksmethod: username
 }
 
 # 定义允许通过代理服务器的协议和端口
 pass {
   from: 0.0.0.0/0 to: 0.0.0.0/0
   protocol: tcp udp
+  socksmethod: username
 }
 
 # 定义允许通过SOCKS协议连接的IP地址和端口
@@ -34,6 +36,7 @@ socks pass {
   from: 0.0.0.0/0 to: 0.0.0.0/0
   command: bind connect udpassociate
   protocol: tcp udp
+  socksmethod: username
 }
 
 # 定义拒绝访问代理服务器的用户
