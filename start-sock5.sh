@@ -21,6 +21,8 @@ if [ "$SOCKS_USER" ] && [ "$SOCKS_PASS" ]; then
         useradd -g $SOCKS_USER -s /bin/false -m $SOCKS_USER
         echo "$SOCKS_USER:$SOCKS_PASS" | chpasswd
     fi
+
+    chown -R $SOCKS_USER:$SOCKS_USER /etc/danted.conf
 fi
 
 danted -f /etc/danted.conf -D

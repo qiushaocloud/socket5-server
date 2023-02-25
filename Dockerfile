@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:latest
 
 # 设置环境变量
 ENV SOCKS_USER ""
