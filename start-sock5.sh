@@ -12,4 +12,15 @@ if [ ! -f "/etc/danted.conf" ];then
 fi
 
 
+if [ "$SOCKS_USER" ] && [ "$SOCKS_PASS" ]; then
+    if id "$SOCKS_USER" >/dev/null 2>&1; then
+        echo "User $SOCKS_USER exists"
+    else
+        echo "User $SOCKS_USER does not exist"
+        groupadd $SOCKS_USER
+        useradd -g $SOCKS_USER -s /bin/false -m $SOCKS_USER
+        echo "$username:$password" | chpasswd
+    fi
+fi
+
 danted -f /etc/danted.conf -D
